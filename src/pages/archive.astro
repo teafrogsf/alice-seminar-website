@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ArchiveItem from '../components/ArchiveItem.astro';
+import fs from 'fs';
+import yaml from 'js-yaml';
+import path from 'path';
+
+// Load seminar data
+const dataPath = path.join(process.cwd(), 'data', 'seminars.yaml');
+const fileContents = fs.readFileSync(dataPath, 'utf8');
+const data = yaml.load(fileContents) as { upcoming: any[]; archive: any[] };
+
+const archiveSeminars = (data.archive || []).sort((a, b) => {
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
+});
+
+// Group by series
+const seminarsBySeries = archiveSeminars.reduce((acc, seminar) => {
+  const series = seminar.series || 1;
+  if (!acc[series]) {
+    acc[series] = [];
+  }
+  acc[series].push(seminar);
+  return acc;
+}, {} as Record<number, any[]>);
+
+// Get series numbers and sort (latest series first)
+const seriesNumbers = Object.keys(seminarsBySeries).sort((a, b) => Number(b) - Number(a));
+
+// Get year range for each series
+const getYearRange = (seminars: any[]) => {
+  const years = seminars.map(s => new Date(s.date).getFullYear());
+  const minYear = Math.min(...years);
+  const maxYear = Math.max(...years);
+  return minYear === maxYear ? `${minYear}` : `${minYear}-${maxYear}`;
+};
+---
+
+<Layout title="ALICE Seminar - 归档" description="浏览往期 ALICE Seminar 研讨会记录">
+  <!-- Page Header -->
+  <div class="bg-white border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h1 class="text-5xl font-serif font-bold text-alice-text mb-4">
+        往期归档
+      </h1>
+      <p class="text-xl text-alice-gray">
+        浏览过往的研讨会记录，下载演讲 Slides
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    {seriesNumbers.length > 0 ? (
+      seriesNumbers.map((seriesNum) => {
+        const seriesData = seminarsBySeries[Number(seriesNum)];
+        const yearRange = getYearRange(seriesData);
+        return (
+          <div class="mb-12">
+            <h2 class="text-3xl font-serif font-bold text-alice-text mb-6 pb-2 border-b-2 border-alice-text/20">
+              Series {seriesNum} ({yearRange})
+            </h2>
+            <div class="space-y-4">
+              {seriesData.map((seminar) => (
+                <ArchiveItem seminar={seminar} />
+              ))}
+            </div>
+          </div>
+        );
+      })
+    ) : (
+      <div class="bg-white rounded-lg shadow-md p-12 text-center">
+        <p class="text-alice-gray text-lg">
+          暂无归档记录
+        </p>
+      </div>
+    )}
+
+    <!-- Back to Home -->
+    <div class="mt-12 text-center">
+      <a 
+        href="/" 
+        class="inline-flex items-center text-alice-gray hover:text-alice-text transition-colors"
+      >
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        返回首页
+      </a>
+    </div>
+  </div>
+</Layout>
+

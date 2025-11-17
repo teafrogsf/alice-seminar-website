@@ -1,0 +1,30 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { 
+  title = "ALICE",
+  subtitle = "AI, Linguistics, Informatics, Cognition & Embodiment" 
+} = Astro.props;
+---
+
+<div class="relative bg-white border-b border-gray-200 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center">
+      <h1 class="text-6xl md:text-8xl font-serif font-bold text-alice-text mb-4 tracking-tight">
+        {title}
+      </h1>
+      <p class="text-xl md:text-2xl text-alice-gray font-serif tracking-wide">
+        {subtitle}
+      </p>
+      <div class="mt-8">
+        <p class="text-sm text-alice-light-gray tracking-widest uppercase">
+         Seminar @ ShanghaiTech
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+

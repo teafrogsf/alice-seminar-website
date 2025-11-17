@@ -1,0 +1,108 @@
+upcoming:
+  - id: 11
+    series: 1
+    date: "2025-11-23"
+    time: "TBD"
+    timezone: "UTC+8"
+    title: ""
+    speaker:
+      name: "程煜晴"
+      bio: "PhD Student at Central Conservatory of Music"
+  - id: 12
+    series: 1
+    date: "2025-11-30"
+    time: "TBD"
+    timezone: "UTC+8"
+    title: ""
+    speaker:
+      name: "唐怿珉"
+      bio: "PhD Student at University of Southern California"
+
+archive:
+  - id: 1
+    series: 1
+    date: "2025-07-27"
+    title: "下一代LLM架构展望"
+    subtitle: "Next Generation of LLM Architectures"
+    speaker: 
+      name: "杨松琳"
+      bio: "MIT CSAIL二年级博士生，导师为Prof. Yoon Kim。专注于线性注意力机制、机器学习与大语言模型交叉领域，聚焦高效序列建模的硬件感知算法设计。Flash Linear Attention 项目的主要贡献者。"
+  - id: 2
+    series: 1
+    date: "2025-08-03"
+    title: "Localize the Credits of Reasoning in Roaring 2025:"
+    subtitle: "LLM Reasoning Paper Potpourri"
+    speaker: 
+      name: "褚天哲"
+      bio: "1st year PhD@HKU, advised by Prof. Yi Ma, focusing on things he doesn’t understand: where does LLM’s reasoning capability come from, how to build benchmarks that are hard to be hacked, how to cook worse than ShanghaiTech restaurants, etc."
+    slides: "/slides/series-1-02-tianzhe.pdf"
+  - id: 3
+    series: 1
+    date: "2025-08-10"
+    title: "Can language models teach us something about how human think and learn?"
+    subtitle: "A Path to Cognitive Language Models"
+    speaker: 
+      name: "宁若汐"
+      bio: "First-year PhD student in Computational Linguistics at the University of Waterloo, advised by Prof. Freda Shi, focusing on probing the cognitive capacities of language models and developing cognitively inspired architectures."
+    slides: "/slides/series-1-03-ruoxi.pdf"
+  - id: 4
+    series: 1
+    date: "2025-08-24"
+    title: "The Mechanistic Interpretability of Large Language Models:"
+    subtitle: "An Inspiration from Multiscale Neuroscience"
+    speaker: 
+      name: "沈逸飞"
+      bio: "Senior researcher at Microsoft who obtained his PhD degree from HKUST, and bachelor's degree from ShanghaiTech University, mainly focusing on the working mechanisms and large-scale pretraining of large language and multimodal models."
+    slides: "/slides/series-1-04-yifei.pdf"
+  - id: 5
+    series: 1
+    date: "2025-09-01"
+    title: "Efficient LLM Serving with Context Caching"
+    subtitle: "高效大模型推理中的上下文缓存"
+    speaker: 
+      name: "谢志强"
+      bio: "斯坦福大学三年级计算机系统方向博士生。研究聚焦于构建高效、可靠的机器学习系统。SGLang项目的主要贡献者。"
+    slides: "/slides/series-1-05-zhiqiang.pdf"
+  - id: 6
+    series: 1
+    date: "2025-09-07"
+    title: "A Brief Introduction on 3D Generation:"
+    subtitle: "High-Quality 3D Assets Generation"
+    speaker: 
+      name: "赵子伯"
+      bio: "Senior researcher at Hunyuan3D, Tencent. He receives the Ph.D. degree and B.E. degree from ShanghaiTech University in 2025 and 2019 respectively, advised by Prof. Shenghua Gao.Currently, he focuses on exploring 3D awareness in foundation models, and he also lead part of the Hunyuan3D-series model development."
+  - id: 7
+    series: 1
+    date: "2025-10-11"
+    title: "Provably Sample-Efficient Reinforcement Learning Algorithms:"
+    subtitle: "Bridging the Sim-to-Real Gap"
+    speaker: 
+      name: "王贺"
+      bio: "卡内基梅隆大学电子与计算机工程系四年级博士生。研究方向为优化与机器学习理论，主要致力于提升强化学习的样本与计算效率、算法的鲁棒性，以及多智能体系统的学习与协作机制研究。"
+  - id: 8
+    series: 1
+    date: "2025-10-19"
+    title: "Learning in Heavy-Tailed Multi-Armed Bandits:"
+    subtitle: "The Best-of-Both-Worlds Parameter-Free Algorithm"
+    speaker: 
+      name: "陈禹"
+      bio: "清华大学交叉信息研究院博士三年级学生，导师为黄隆波教授，在清华大学数学系获得本科学位。过往主要研究方向为强化学习以及在线学习，关注困难条件下（例如风险敏感条件，或者长尾分布条件等）如何实现高效的具有理论保证的学习算法。"
+    slides: "/slides/series-1-08-yu.pdf"
+  - id: 9
+    series: 1
+    date: "2025-11-02"
+    title: "Can AI \"Understand\" Historical Archives?"
+    subtitle: "From Digital Humanities and Computational History to A Case Study on Multimodal Latin Detection"
+    speaker:
+      name: "吴隅"
+      bio: "赫尔辛基大学人文学院二年级博士研究员，导师为Eetu Mäkelä和Mikko Tolonen。致力于融合多模态AI模型与人文学科，研究目标是开发稳健的计算方法，以应对大规模历史数据分析中和语义相关的独特挑战，并为历史与文学研究贡献新的方法论。"
+    slides: "/slides/series-1-09-yu.pdf"
+  - id: 10
+    series: 1
+    date: "2025-11-15"
+    title: "Smell HCI From a Thousand Miles Away:"
+    subtitle: "A Tasting Menu of Human-Computer Interaction"
+    speaker:
+      name: "张晨杨"
+      bio: "佐治亚理工学院人机交互方向二年级博士生。研究方向为AR/VR中的交互设计与空间计算，主要致力于探索新的空间交互范式与沉浸式体验形式，以丰富空间计算设备在生产力、沟通协作、媒体呈现等场景中的应用，并将其拓展至更广泛的用户群体。"
+    slides: "/slides/series-1-10-chenyang.pdf"

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>字体回退机制演示</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;600&display=swap">
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    
+    .demo-section {
+      background: white;
+      padding: 30px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .demo-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #2C2C2C;
+    }
+    
+    .font-stack {
+      background: #f9f9f9;
+      padding: 10px;
+      border-left: 4px solid #666;
+      margin: 10px 0;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    
+    .demo-text {
+      font-size: 32px;
+      margin: 15px 0;
+      padding: 15px;
+      background: #fafafa;
+      border-radius: 4px;
+    }
+    
+    .explanation {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+      padding: 10px;
+      background: #fff9e6;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    
+    .char-breakdown {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+    
+    .char-item {
+      background: #e8f5e9;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+      min-width: 100px;
+    }
+    
+    .char {
+      font-size: 36px;
+      margin-bottom: 5px;
+    }
+    
+    .font-used {
+      font-size: 12px;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2C2C2C;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 字体回退机制演示</h1>
+  <p class="subtitle">理解浏览器如何选择字体</p>
+
+  <!-- Demo 1 -->
+  <div class="demo-section">
+    <div class="demo-title">示例 1：纯英文文本</div>
+    <div class="font-stack">
+      font-family: 'Playfair Display', 'Noto Serif SC', serif;
+    </div>
+    <div class="demo-text" style="font-family: 'Playfair Display', 'Noto Serif SC', serif;">
+      ALICE SEMINAR
+    </div>
+    <div class="explanation">
+      <strong>✅ 使用字体：</strong>Playfair Display<br>
+      <strong>原因：</strong>第一个字体 'Playfair Display' 支持所有英文字符，浏览器直接使用，不会尝试后面的字体。
+    </div>
+  </div>
+
+  <!-- Demo 2 -->
+  <div class="demo-section">
+    <div class="demo-title">示例 2：纯中文文本</div>
+    <div class="font-stack">
+      font-family: 'Playfair Display', 'Noto Serif SC', serif;
+    </div>
+    <div class="demo-text" style="font-family: 'Playfair Display', 'Noto Serif SC', serif;">
+      人工智能研讨会
+    </div>
+    <div class="explanation">
+      <strong>✅ 使用字体：</strong>Noto Serif SC<br>
+      <strong>原因：</strong>
+      <ol style="margin: 5px 0; padding-left: 20px;">
+        <li>尝试 'Playfair Display' → ❌ 不支持中文</li>
+        <li>尝试 'Noto Serif SC' → ✅ 支持中文，使用这个！</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Demo 3 -->
+  <div class="demo-section">
+    <div class="demo-title">示例 3：中英文混合（重点！）</div>
+    <div class="font-stack">
+      font-family: 'Playfair Display', 'Noto Serif SC', serif;
+    </div>
+    <div class="demo-text" style="font-family: 'Playfair Display', 'Noto Serif SC', serif;">
+      ALICE 人工智能研讨会
+    </div>
+    
+    <div class="explanation">
+      <strong>🎨 关键点：同一行文字使用了不同字体！</strong>
+    </div>
+    
+    <div class="char-breakdown">
+      <div class="char-item">
+        <div class="char" style="font-family: 'Playfair Display', serif;">ALICE</div>
+        <div class="font-used">Playfair Display</div>
+      </div>
+      <div class="char-item">
+        <div class="char" style="font-family: 'Noto Serif SC', serif;">人工智能</div>
+        <div class="font-used">Noto Serif SC</div>
+      </div>
+      <div class="char-item">
+        <div class="char" style="font-family: 'Noto Serif SC', serif;">研讨会</div>
+        <div class="font-used">Noto Serif SC</div>
+      </div>
+    </div>
+    
+    <div class="explanation">
+      浏览器为<strong>每个字符</strong>选择合适的字体：
+      <ul style="margin: 5px 0; padding-left: 20px;">
+        <li>"ALICE" → Playfair Display（英文字体）</li>
+        <li>"人工智能研讨会" → Noto Serif SC（中文字体）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Demo 4 -->
+  <div class="demo-section">
+    <div class="demo-title">示例 4：不同字体栈的对比</div>
+    
+    <div style="margin: 20px 0;">
+      <div class="font-stack">
+        方案 A: 'Inter', 'Noto Sans SC', sans-serif;
+      </div>
+      <div class="demo-text" style="font-family: 'Inter', 'Noto Sans SC', sans-serif;">
+        ALICE 研讨会 2024
+      </div>
+    </div>
+
+    <div style="margin: 20px 0;">
+      <div class="font-stack">
+        方案 B: 'Playfair Display', 'Noto Serif SC', serif;
+      </div>
+      <div class="demo-text" style="font-family: 'Playfair Display', 'Noto Serif SC', serif;">
+        ALICE 研讨会 2024
+      </div>
+    </div>
+
+    <div class="explanation">
+      <strong>对比说明：</strong><br>
+      • 方案 A 使用无衬线字体（Inter），更现代简洁<br>
+      • 方案 B 使用衬线字体（Playfair Display），更优雅正式<br>
+      • 两种方案的中文都使用相应风格的中文字体作为备用
+    </div>
+  </div>
+
+  <!-- Demo 5 -->
+  <div class="demo-section">
+    <div class="demo-title">示例 5：字体加载失败的保护</div>
+    
+    <div style="margin: 20px 0;">
+      <div class="font-stack" style="border-left-color: #d32f2f;">
+        'NonExistentFont', 'Noto Sans SC', sans-serif;
+      </div>
+      <div class="demo-text" style="font-family: 'NonExistentFont', 'Noto Sans SC', sans-serif;">
+        这个字体不存在但依然正常显示
+      </div>
+    </div>
+
+    <div class="explanation">
+      <strong>容错机制：</strong><br>
+      即使第一个字体 'NonExistentFont' 不存在，浏览器会自动使用第二个字体 'Noto Sans SC'，确保文字正常显示。
+      这就是为什么要设置多个备用字体的原因！
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="demo-section" style="background: #e3f2fd;">
+    <div class="demo-title">📚 总结</div>
+    <div style="line-height: 1.8; color: #2C2C2C;">
+      <strong>字体回退规则：</strong>
+      <ol style="padding-left: 20px;">
+        <li>浏览器从左到右按顺序尝试每个字体</li>
+        <li>如果字体存在且支持当前字符，就使用它</li>
+        <li>如果不支持，尝试下一个字体</li>
+        <li>同一段文字中，不同字符可能使用不同字体</li>
+        <li>最后的通用字体族（serif/sans-serif）是保底选项</li>
+      </ol>
+      
+      <strong style="display: block; margin-top: 15px;">这样设计的好处：</strong>
+      <ul style="padding-left: 20px;">
+        <li>✅ 中英文都能显示最佳效果</li>
+        <li>✅ 字体加载失败也有备用方案</li>
+        <li>✅ 在不同设备和系统上都能正常显示</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>
+

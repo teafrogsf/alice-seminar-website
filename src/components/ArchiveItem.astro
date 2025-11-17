@@ -1,0 +1,143 @@
+---
+interface Props {
+  seminar: {
+    id: number;
+    date: string;
+    title: string;
+    subtitle?: string;
+    speaker: {
+      name: string;
+      bio: string;
+      homepage?: string;
+    };
+    slides?: string;
+  };
+}
+
+const { seminar } = Astro.props;
+
+// Format date
+const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('zh-CN', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+};
+
+// Generate unique ID for this item
+const uniqueId = `archive-${seminar.id}`;
+---
+
+<div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow mb-4">
+  <!-- Main Content (Always Visible) -->
+  <div class="p-6">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+      <div class="flex-1">
+        <div class="flex items-baseline space-x-4 mb-2">
+          <span class="text-sm text-alice-light-gray font-medium">
+            {formatDate(seminar.date)}
+          </span>
+          <span class="text-alice-gray font-serif">
+            {seminar.speaker.name}
+          </span>
+        </div>
+        <h3 class="text-xl font-serif font-medium text-alice-text mb-2">
+          {seminar.title}
+        </h3>
+        {seminar.subtitle && (
+          <p class="text-sm text-alice-gray italic font-serif mt-1">
+            {seminar.subtitle}
+          </p>
+        )}
+      </div>
+      
+      <div class="mt-4 md:mt-0 md:ml-6 flex items-center space-x-2 flex-shrink-0">
+        {seminar.slides && (
+          <a 
+            href={seminar.slides}
+            download
+            class="inline-flex items-center px-4 py-2 bg-alice-text text-white rounded-md hover:bg-alice-gray transition-colors text-sm font-medium"
+          >
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            下载 Slides
+          </a>
+        )}
+        
+        <!-- Expand/Collapse Button -->
+        <button 
+          class="expand-button inline-flex items-center px-3 py-2 text-alice-gray hover:text-alice-text transition-colors text-sm font-medium"
+          data-target={uniqueId}
+          aria-expanded="false"
+        >
+          <span class="expand-text">详情</span>
+          <svg class="w-5 h-5 ml-1 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Expandable Content -->
+  <div id={uniqueId} class="expandable-content hidden overflow-hidden">
+    <div class="px-6 pb-6 pt-2 border-t border-gray-100">
+      <p class="text-sm text-alice-gray leading-relaxed font-serif">
+        {seminar.speaker.bio}
+      </p>
+      {seminar.speaker.homepage && (
+        <div class="mt-4">
+          <a 
+            href={seminar.speaker.homepage}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center text-sm text-alice-text hover:text-alice-gray transition-colors font-medium"
+          >
+            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            访问个人主页
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+
+<script>
+  // Handle expand/collapse functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.expand-button');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const content = document.getElementById(targetId!);
+        const icon = button.querySelector('svg');
+        const text = button.querySelector('.expand-text');
+        
+        if (content && icon && text) {
+          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+          
+          if (isExpanded) {
+            // Collapse
+            content.classList.add('hidden');
+            icon.classList.remove('rotate-180');
+            text.textContent = '详情';
+            button.setAttribute('aria-expanded', 'false');
+          } else {
+            // Expand
+            content.classList.remove('hidden');
+            icon.classList.add('rotate-180');
+            text.textContent = '收起';
+            button.setAttribute('aria-expanded', 'true');
+          }
+        }
+      });
+    });
+  });
+</script>
+

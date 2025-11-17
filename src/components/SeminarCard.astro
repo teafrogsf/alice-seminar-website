@@ -1,0 +1,96 @@
+---
+interface Props {
+  seminar: {
+    id: number;
+    date: string;
+    time: string;
+    timezone?: string;
+    title: string;
+    subtitle?: string;
+    speaker: {
+      name: string;
+      bio: string;
+    };
+    meeting_id?: string;
+    qr_code?: string;
+  };
+}
+
+const { seminar } = Astro.props;
+
+// Format date
+const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${month}/${day}`;
+};
+---
+
+<div class="bg-white rounded-lg shadow-md card-hover p-8 mb-8">
+  <div class="grid md:grid-cols-3 gap-8">
+    <!-- Left: Date & Time -->
+    <div class="md:col-span-1 flex flex-col items-center md:items-start justify-center border-b md:border-b-0 md:border-r border-gray-200 pb-6 md:pb-0 md:pr-8">
+      <div class="text-center md:text-left">
+        <div class="text-6xl font-serif font-bold text-alice-text mb-2">
+          {formatDate(seminar.date)}
+        </div>
+        {seminar.timezone && (
+          <div class="text-sm text-alice-light-gray mb-2">
+            ({seminar.timezone})
+          </div>
+        )}
+        <div class="text-2xl text-alice-gray font-medium">
+          {seminar.time}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Content -->
+    <div class="md:col-span-2">
+      <!-- Title -->
+      <div class="mb-6 relative">
+        <div class="quote-mark float-left mr-2 -mt-2">"</div>
+        {(!seminar.title || !seminar.title.trim()) && (!seminar.subtitle || !seminar.subtitle.trim()) ? (
+          <>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold text-alice-text leading-relaxed text-center mb-0">
+              To Be Determined
+            </h3>
+            <div class="quote-mark float-right -mt-10 ml-2 rotate-180">"</div>
+          </>
+        ) : seminar.subtitle && seminar.subtitle.trim() ? (
+          <>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold text-alice-text leading-relaxed mb-2">
+              {seminar.title}
+            </h3>
+            <div class="flex items-center justify-end">
+              <p class="text-lg text-alice-gray font-serif italic mr-2">
+                {seminar.subtitle}
+              </p>
+              <div class="quote-mark rotate-180">"</div>
+            </div>
+          </>
+        ) : (
+          <>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold text-alice-text leading-relaxed mb-0">
+              {seminar.title}
+            </h3>
+            <div class="quote-mark float-right -mt-6 ml-2 rotate-180">"</div>
+          </>
+        )}
+        <div class="clear-both"></div>
+      </div>
+
+      <!-- Speaker -->
+      <div class="mt-8 pt-6 border-t border-gray-200">
+        <h4 class="text-xl font-medium text-alice-text mb-3 font-serif">
+          {seminar.speaker.name}
+        </h4>
+        <p class="text-sm text-alice-gray leading-relaxed font-serif">
+          {seminar.speaker.bio}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+

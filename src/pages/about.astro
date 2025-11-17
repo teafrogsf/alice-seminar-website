@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+import fs from 'fs';
+import yaml from 'js-yaml';
+import path from 'path';
+
+// Load contributors data
+const dataPath = path.join(process.cwd(), 'data', 'contributors.yaml');
+const fileContents = fs.readFileSync(dataPath, 'utf8');
+const data = yaml.load(fileContents) as { 
+  contributors: Array<{ name: string; role: string; homepage?: string }>; 
+  contact: { email: string; description: string } 
+};
+
+const contributors = data.contributors || [];
+const contact = data.contact;
+---
+
+<Layout title="ALICE Seminar - 关于" description="了解 ALICE Seminar 的更多信息">
+  <!-- Page Header -->
+  <div class="bg-white border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h1 class="text-5xl font-serif font-bold text-alice-text mb-4">
+        关于 ALICE
+      </h1>
+      <p class="text-xl text-alice-gray font-serif">
+        A seminar about AI, Linguistics, Informatics, Cognition & Embodiment
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Introduction -->
+    <section class="mb-16">
+      <div class="prose prose-lg max-w-none">
+        <div class="bg-white rounded-lg shadow-sm p-8 font-serif leading-relaxed">
+          <h2 class="text-3xl font-serif font-bold text-alice-text mb-6">我们的愿景</h2>
+          
+          <p class="text-alice-gray mb-4">
+            作为研究型大学的学生，我们相信许多同学都对科研充满好奇，希望在本科阶段就开展一段科研工作，作出有价值的学术贡献。然而，在本科生涯的求学之路中，我们发现，许多同学并不能很好地发现自己的研究兴趣，这或许源于课堂与学术前沿还有着相当的距离，而大家在开始科研之前，很难知道真正的科研到底是什么；同时，一所学校所能涵盖的研究方向终究有限，许多同学在校内没有机会接触到计算机科学中许多同样有魅力的其他方向。
+          </p>
+
+          <p class="text-alice-gray mb-4">
+            在与一些毕业的学长学姐聊天的时候，我们发现大家在毕业之后的研究方向可能与在校时相比有了许多新变化，这些宝贵的经验和视野对于在校生来说是十分难得的。但在学校学习的过程中，我们很少有机会与已经毕业的学长学姐有相对正式的学术交流，而许多本科生也没有机会和渠道了解整个学术界中的许多方向当前正在关注的问题。
+          </p>
+
+          <p class="text-alice-gray mb-6">
+            因此，我们希望能够搭起一个沟通的桥梁，帮助本科生和低年级研究生更好地了解到计算机科学不同领域的前沿知识，启发大家的研究视野，同时促进大家与优秀研究者的交流。
+          </p>
+
+          <h3 class="text-2xl font-serif font-bold text-alice-text mb-4 mt-8">研讨会定位</h3>
+          
+          <p class="text-alice-gray mb-4">
+            ALICE Seminar 围绕 AI、Linguistics、Informatics、Cognition 和 Embodiment 五个领域，邀请来自这些领域的优秀研究者分享自己的工作和对领域发展的思考。虽然脱胎于 CS，但我们非常鼓励交叉学科的融合交流，也会邀请来自交叉学科的研究者参与我们的 seminar！
+          </p>
+
+          <p class="text-alice-gray">
+            第一系列 Seminar 的主要演讲者均为上科大毕业生。我们相信这能成为上科大 CS 本科生探索研究方向的一个平台；当然，我们也欢迎对科研感兴趣的其他学校的同学一起参与。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contributors -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-serif font-bold text-alice-text mb-8">贡献者</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        {contributors.map((contributor) => 
+          contributor.homepage ? (
+            <a
+              href={contributor.homepage}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block bg-white rounded-lg shadow-sm p-6 border-l-4 border-alice-gray/30 hover:border-alice-text hover:shadow-md hover:-translate-y-0.5 transition-all relative group"
+            >
+              <div>
+                <h3 class="text-xl font-medium text-alice-text font-serif mb-1">
+                  {contributor.name}
+                </h3>
+                <div class="flex items-center justify-between">
+                  <p class="text-sm text-alice-gray font-serif">
+                    {contributor.role}
+                  </p>
+                  <div class="text-xs text-alice-gray/60 font-serif opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+                    <span>访问个人主页</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ) : (
+            <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-alice-gray/30 transition-colors relative">
+              <div>
+                <h3 class="text-xl font-medium text-alice-text font-serif mb-1">
+                  {contributor.name}
+                </h3>
+                <p class="text-sm text-alice-gray font-serif">
+                  {contributor.role}
+                </p>
+              </div>
+            </div>
+          )
+        )}
+      </div>
+    </section>
+
+    <!-- Acknowledgements -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-serif font-bold text-alice-text mb-8">致谢</h2>
+      <div class="bg-white rounded-lg shadow-sm p-8">
+        <div class="prose prose-lg max-w-none">
+          <p class="text-alice-gray font-serif leading-relaxed mb-4">
+            感谢 FAI Seminar 的组织者滕佳烨老师提供的宝贵建议。<br />
+            感谢赵清澄、刘思彤、沈逸飞、宁若汐等同学对 ALICE Seminar 的策划与组织提供的帮助。<br />
+            感谢所有为 ALICE Seminar 做出贡献的演讲嘉宾、组织者和参与者。你们的热情和支持让这个学术交流平台得以持续发展，为更多同学打开了通往学术前沿的大门。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-serif font-bold text-alice-text mb-8">联系我们</h2>
+      <div class="bg-gradient-to-br from-white to-alice-bg rounded-lg shadow-sm p-8">
+        <div class="flex items-start space-x-4">
+          <svg class="w-8 h-8 text-alice-gray mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <div class="flex-1">
+            <p class="text-alice-gray mb-3 font-serif">
+              {contact.description}
+            </p>
+            <a 
+              href={`mailto:${contact.email}`}
+              class="text-alice-text hover:text-alice-gray transition-colors font-serif font-medium text-base"
+            >
+              {contact.email}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back to Home -->
+    <div class="text-center">
+      <a 
+        href="/" 
+        class="inline-flex items-center text-alice-gray hover:text-alice-text transition-colors"
+      >
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        返回首页
+      </a>
+    </div>
+  </div>
+</Layout>
+

@@ -1,0 +1,12 @@
+contributors:
+  - name: "曹宇涵（蛙）"
+    role: "Organizer"
+    homepage: "https://teafrogsf.github.io"  # 可选字段，如果有个人主页就填写
+  - name: "杜辰辰"
+    role: "Design"
+    homepage: ""  # 留空表示没有个人主页
+
+contact:
+  email: "yuhanteafrog@gmail.com"
+  description: "如有任何问题或建议，欢迎通过邮件联系我们。"
+
