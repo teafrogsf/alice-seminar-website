@@ -13,7 +13,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/playfair-display/playfair-display-v30-latin-regular.woff2') format('woff2');
+  src: url('/fonts/playfair-display/playfair-display-v40-latin-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -21,7 +21,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/playfair-display/playfair-display-v30-latin-700.woff2') format('woff2');
+  src: url('/fonts/playfair-display/playfair-display-v40-latin-700.woff2') format('woff2');
 }
 
 @font-face {
@@ -29,7 +29,7 @@
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url('/fonts/playfair-display/playfair-display-v30-latin-900.woff2') format('woff2');
+  src: url('/fonts/playfair-display/playfair-display-v40-latin-900.woff2') format('woff2');
 }
 
 /* Inter - 英文无衬线字体 */
@@ -38,7 +38,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url('/fonts/inter/inter-v13-latin-300.woff2') format('woff2');
+  src: url('/fonts/inter/inter-v20-latin-300.woff2') format('woff2');
 }
 
 @font-face {
@@ -46,7 +46,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/inter/inter-v13-latin-regular.woff2') format('woff2');
+  src: url('/fonts/inter/inter-v20-latin-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -54,7 +54,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('/fonts/inter/inter-v13-latin-500.woff2') format('woff2');
+  src: url('/fonts/inter/inter-v20-latin-500.woff2') format('woff2');
 }
 
 @font-face {
@@ -62,7 +62,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('/fonts/inter/inter-v13-latin-600.woff2') format('woff2');
+  src: url('/fonts/inter/inter-v20-latin-600.woff2') format('woff2');
 }
 
 /* Noto Serif SC - 中文衬线字体 */
@@ -71,7 +71,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/noto-serif-sc/noto-serif-sc-v26-chinese-simplified-regular.woff2') format('woff2');
+  src: url('/fonts/noto-serif-sc/noto-serif-sc-v34-chinese-simplified-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -79,7 +79,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('/fonts/noto-serif-sc/noto-serif-sc-v26-chinese-simplified-500.woff2') format('woff2');
+  src: url('/fonts/noto-serif-sc/noto-serif-sc-v34-chinese-simplified-500.woff2') format('woff2');
 }
 
 @font-face {
@@ -87,7 +87,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/noto-serif-sc/noto-serif-sc-v26-chinese-simplified-700.woff2') format('woff2');
+  src: url('/fonts/noto-serif-sc/noto-serif-sc-v34-chinese-simplified-700.woff2') format('woff2');
 }
 
 /* Noto Sans SC - 中文无衬线字体 */
@@ -96,7 +96,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url('/fonts/noto-sans-sc/noto-sans-sc-v36-chinese-simplified-300.woff2') format('woff2');
+  src: url('/fonts/noto-sans-sc/noto-sans-sc-v39-chinese-simplified-300.woff2') format('woff2');
 }
 
 @font-face {
@@ -104,7 +104,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/noto-sans-sc/noto-sans-sc-v36-chinese-simplified-regular.woff2') format('woff2');
+  src: url('/fonts/noto-sans-sc/noto-sans-sc-v39-chinese-simplified-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -112,7 +112,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('/fonts/noto-sans-sc/noto-sans-sc-v36-chinese-simplified-500.woff2') format('woff2');
+  src: url('/fonts/noto-sans-sc/noto-sans-sc-v39-chinese-simplified-500.woff2') format('woff2');
 }
 
 /* ====================
