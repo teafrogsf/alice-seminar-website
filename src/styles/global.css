@@ -120,7 +120,7 @@
    ==================== */
 :root {
   /* 衬线字体 (serif) - 用于标题、演讲者姓名、装饰性文字 */
-  --font-serif: 'Playfair Display', 'Noto Serif SC', serif;
+  --font-serif: 'Noto Serif SC', serif;
   
   /* 无衬线字体 (sans) - 用于正文、导航、按钮 */
   --font-sans: 'Inter', 'Noto Sans SC', sans-serif;
