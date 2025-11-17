@@ -2,11 +2,121 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+/* ====================
+   本地字体加载 - 使用 @font-face
+   字体文件位于 public/fonts/ 目录
+   ==================== */
+
+/* Playfair Display - 英文衬线字体 */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/playfair-display/playfair-display-v30-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/playfair-display/playfair-display-v30-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/playfair-display/playfair-display-v30-latin-900.woff2') format('woff2');
+}
+
+/* Inter - 英文无衬线字体 */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/inter/inter-v13-latin-300.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/inter/inter-v13-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/inter/inter-v13-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/inter/inter-v13-latin-600.woff2') format('woff2');
+}
+
+/* Noto Serif SC - 中文衬线字体 */
+@font-face {
+  font-family: 'Noto Serif SC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/noto-serif-sc/noto-serif-sc-v26-chinese-simplified-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Serif SC';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/noto-serif-sc/noto-serif-sc-v26-chinese-simplified-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Serif SC';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/noto-serif-sc/noto-serif-sc-v26-chinese-simplified-700.woff2') format('woff2');
+}
+
+/* Noto Sans SC - 中文无衬线字体 */
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/noto-sans-sc/noto-sans-sc-v36-chinese-simplified-300.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/noto-sans-sc/noto-sans-sc-v36-chinese-simplified-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/noto-sans-sc/noto-sans-sc-v36-chinese-simplified-500.woff2') format('woff2');
+}
 
 /* ====================
-   字体配置区域 - 在这里修改字体！
+   字体配置区域 - CSS 变量定义
    ==================== */
 :root {
   /* 衬线字体 (serif) - 用于标题、演讲者姓名、装饰性文字 */
