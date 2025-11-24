@@ -1,14 +1,14 @@
 upcoming:
-  - id: 11
+  - id: 12
     series: 1
-    date: "2025-11-23"
+    date: "2025-12-07"
     time: "TBD"
     timezone: "UTC+8"
     title: ""
     speaker:
       name: "程煜晴"
       bio: "PhD Student at Central Conservatory of Music"
-  - id: 12
+  - id: 11
     series: 1
     date: "2025-11-30"
     time: "TBD"
