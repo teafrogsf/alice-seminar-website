@@ -11,9 +11,10 @@ upcoming:
   - id: 11
     series: 1
     date: "2025-11-30"
-    time: "TBD"
+    time: "14:00-15:00"
     timezone: "UTC+8"
-    title: ""
+    title: "Spatial Intelligence:"
+    subtitle: "Toward Environmental Intelligence for Controlling All Agents in a Specific Space"
     speaker:
       name: "唐怿珉"
       bio: "PhD Student at University of Southern California"
